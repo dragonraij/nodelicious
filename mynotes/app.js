@@ -10,14 +10,20 @@ var res = notes.addNote();
 // var user = os.userInfo();
 
 var args = yargs.argv
-console.log('yargs', args);
-var command = process.argv[2];
+var command = args._[0];
 
 if (command === 'add'){
     notes.addNote(args.title, args.body)
 }
-else if (command === 'remove'){
-    console.log("note added");
-}
+else if (command === 'list') {
+    notes.getAll();
+  } else if (command === 'read') {
+    notes.getNote(args.title);
+  } else if (command === 'remove') {
+    notes.removeNote(args.title);
+  } else {
+    console.log('Command not recognized');
+  }
+  
 
 //fs.appendFile('greetings.txt', 'Hello Worlds!');
