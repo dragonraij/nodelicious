@@ -5,10 +5,6 @@ const os = require('os');
 const notes = require('./notes.js');
 const yargs = require('yargs');
 
-
-var res = notes.addNote();
-// var user = os.userInfo();
-
 var args = yargs.argv
 var command = args._[0];
 
