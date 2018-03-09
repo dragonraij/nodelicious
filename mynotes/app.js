@@ -18,16 +18,32 @@ if (command === 'add'){
     }
 }
 else if (command === 'list') {
-    notes.getAll();
+      var result = notes.getAll();
+      if(result === null){
+        console.log("Note not found. Title: ", note.title)
+     
+      }else{
+        console.log("Notes found ");
+        console.log("==");
+        result.forEach(note => {
+          console.log(note.title, " : ", note.body);
+        });
+      }
   } else if (command === 'read') {
-    notes.getNote(args.title);
+      var note = notes.getNote(args.title);
+      if(note === null){
+        console.log("Note does not exist", args.title)
+        
+      }else{
+        console.log("Note was returned. Title: ", note.title, " Body : ", note.body)
+        
+      }
   } else if (command === 'remove') {
-    var note = notes.removeNote(args.title);
+      var note = notes.removeNote(args.title);
       if(note){
         console.log("Note was removed. Title: ", note.title, " Body : ", note.body)
       }else{
-        console.log("Note not found. Title: ", note.title)
-
+        console.log("Note not found. Title: ", args.title)
       }
   } else {
     console.log('Command not recognized');

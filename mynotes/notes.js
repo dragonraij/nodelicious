@@ -41,11 +41,13 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-    console.log("Returning all nodes");
+    return  fetchNotes();
 }
 
 var getNote = (title) => {
-    console.log("Getting note", title);
+    var notes = fetchNotes();
+    return notes.filter((note) => note.title === title);
+    
 }
 
 var removeNote = (title) => {
